@@ -4,19 +4,19 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from thrift.Thrift import *
-import hive_metastore.ThriftHiveMetastore
+from ..thrift.Thrift import *
+from ..hive_metastore import ThriftHiveMetastore
 from ttypes import *
-from thrift.Thrift import TProcessor
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol, TProtocol
+from ..thrift.Thrift import TProcessor
+from ..thrift.transport import TTransport
+from ..thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from thrift.protocol import fastbinary
+  from ..thrift.protocol import fastbinary
 except:
   fastbinary = None
 
 
-class Iface(hive_metastore.ThriftHiveMetastore.Iface):
+class Iface(ThriftHiveMetastore.Iface):
   def execute(self, query):
     """
     Parameters:
@@ -53,9 +53,9 @@ class Iface(hive_metastore.ThriftHiveMetastore.Iface):
     pass
 
 
-class Client(hive_metastore.ThriftHiveMetastore.Client, Iface):
+class Client(ThriftHiveMetastore.Client, Iface):
   def __init__(self, iprot, oprot=None):
-    hive_metastore.ThriftHiveMetastore.Client.__init__(self, iprot, oprot)
+    ThriftHiveMetastore.Client.__init__(self, iprot, oprot)
 
   def execute(self, query):
     """
@@ -305,9 +305,9 @@ class Client(hive_metastore.ThriftHiveMetastore.Client, Iface):
     return
 
 
-class Processor(hive_metastore.ThriftHiveMetastore.Processor, Iface, TProcessor):
+class Processor(ThriftHiveMetastore.Processor, Iface, TProcessor):
   def __init__(self, handler):
-    hive_metastore.ThriftHiveMetastore.Processor.__init__(self, handler)
+    ThriftHiveMetastore.Processor.__init__(self, handler)
     self._processMap["execute"] = Processor.process_execute
     self._processMap["fetchOne"] = Processor.process_fetchOne
     self._processMap["fetchN"] = Processor.process_fetchN
@@ -1006,7 +1006,7 @@ class getSchema_result:
   """
 
   thrift_spec = (
-    (0, TType.STRUCT, 'success', (hive_metastore.ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
+    (0, TType.STRUCT, 'success', (ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
     (1, TType.STRUCT, 'ex', (HiveServerException, HiveServerException.thrift_spec), None, ), # 1
   )
 
@@ -1025,7 +1025,7 @@ class getSchema_result:
         break
       if fid == 0:
         if ftype == TType.STRUCT:
-          self.success = hive_metastore.ttypes.Schema()
+          self.success = ttypes.Schema()
           self.success.read(iprot)
         else:
           iprot.skip(ftype)
@@ -1121,7 +1121,7 @@ class getThriftSchema_result:
   """
 
   thrift_spec = (
-    (0, TType.STRUCT, 'success', (hive_metastore.ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
+    (0, TType.STRUCT, 'success', (ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
     (1, TType.STRUCT, 'ex', (HiveServerException, HiveServerException.thrift_spec), None, ), # 1
   )
 
@@ -1140,7 +1140,7 @@ class getThriftSchema_result:
         break
       if fid == 0:
         if ftype == TType.STRUCT:
-          self.success = hive_metastore.ttypes.Schema()
+          self.success = ttypes.Schema()
           self.success.read(iprot)
         else:
           iprot.skip(ftype)

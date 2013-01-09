@@ -4,19 +4,19 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from thrift.Thrift import *
-import fb303.FacebookService
+from ..thrift.Thrift import *
+from ..fb303 import FacebookService as fb303_FacebookServer
 from ttypes import *
-from thrift.Thrift import TProcessor
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol, TProtocol
+from ..thrift.Thrift import TProcessor
+from ..thrift.transport import TTransport
+from ..thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from thrift.protocol import fastbinary
+  from ..thrift.protocol import fastbinary
 except:
   fastbinary = None
 
 
-class Iface(fb303.FacebookService.Iface):
+class Iface(fb303_FacebookService.Iface):
   """
   This interface is live.
   """
@@ -592,12 +592,12 @@ class Iface(fb303.FacebookService.Iface):
     pass
 
 
-class Client(fb303.FacebookService.Client, Iface):
+class Client(fb303_FacebookService.Client, Iface):
   """
   This interface is live.
   """
   def __init__(self, iprot, oprot=None):
-    fb303.FacebookService.Client.__init__(self, iprot, oprot)
+    fb303_FacebookService.Client.__init__(self, iprot, oprot)
 
   def create_database(self, database):
     """
@@ -3082,9 +3082,9 @@ class Client(fb303.FacebookService.Client, Iface):
     return
 
 
-class Processor(fb303.FacebookService.Processor, Iface, TProcessor):
+class Processor(fb303_FacebookService.Processor, Iface, TProcessor):
   def __init__(self, handler):
-    fb303.FacebookService.Processor.__init__(self, handler)
+    fb303_FacebookService.Processor.__init__(self, handler)
     self._processMap["create_database"] = Processor.process_create_database
     self._processMap["get_database"] = Processor.process_get_database
     self._processMap["drop_database"] = Processor.process_drop_database

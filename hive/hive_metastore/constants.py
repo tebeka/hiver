@@ -4,7 +4,7 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from thrift.Thrift import *
+from ..thrift.Thrift import *
 from ttypes import *
 
 DDL_TIME = "transient_lastDdlTime"

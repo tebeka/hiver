@@ -4,14 +4,13 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from thrift.Thrift import *
-import fb303.ttypes
+from ..thrift.Thrift import *
 
 
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol, TProtocol
+from ..thrift.transport import TTransport
+from ..thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from thrift.protocol import fastbinary
+  from ..thrift.protocol import fastbinary
 except:
   fastbinary = None
 
