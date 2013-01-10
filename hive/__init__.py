@@ -1,3 +1,5 @@
+__version__ = '0.1.0'
+
 DEFAULT_HOST = 'localhost'
 DEFAULT_PORT = 10000
 

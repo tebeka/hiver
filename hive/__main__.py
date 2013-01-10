@@ -1,25 +1,32 @@
 #!/usr/bin/env python
 
-from . import connect
+from . import connect, DEFAULT_HOST, DEFAULT_PORT, __version__
 from .hive_service import ThriftHive
 import re
 from os import environ
+from os.path import expanduser, isfile
 
-HOST = environ.get('HIVE_HOST', 'localhost')
-PORT = int(environ.get('HIVE_PORT', '10000'))
+HOST = environ.get('HIVE_HOST', DEFAULT_HOST)
+PORT = int(environ.get('HIVE_PORT', DEFAULT_PORT))
+
+HISTFILE = expanduser('~/.hive-history')
 
 
 def fix_hql(hql):
     # 'SHOW TABLES;' -> 'SHOW TABLES'
     return re.sub('\s*;+\s*$', '', hql, re.M|re.S)
 
+
 def repl(client):
     import readline
-    readline.parse_and_bind("tab: complete")
+    if isfile(HISTFILE):
+        readline.read_history_file(HISTFILE)
+
     while True:
         try:
             hql = raw_input('[hive] ').strip()
         except (KeyboardInterrupt, EOFError):
+            readline.write_history_file(HISTFILE)
             return
 
         hql = fix_hql(hql)
@@ -29,6 +36,7 @@ def repl(client):
                 print(line)
         except ThriftHive.HiveServerException as e:
             print('ERROR: {}'.format(e))
+
 
 def script(client, filename):
     with open(filename) as fo:
@@ -54,6 +62,7 @@ def main(argv=None):
     parser.add_argument('--host', default=HOST)
     parser.add_argument('--port', default=PORT, type=int)
     parser.add_argument('script', help='script file', nargs='?')
+    parser.add_argument('--version', action='version', version=__version__)
     args = parser.parse_args(argv[1:])
 
     client = connect(args.host, args.port)

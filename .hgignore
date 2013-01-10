@@ -1,0 +1,6 @@
+syntax: glob
+
+README.html
+build
+dist
+hive.egg-info/
