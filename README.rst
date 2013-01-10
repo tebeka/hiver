@@ -13,8 +13,8 @@ In code
 -------
 ::
     
-    import hive
-    client = hive.connect(host, port)
+    import hiver
+    client = hiver.connect(host, port)
     client.execute('SHOW TABLES')
     rows = client.fetchAll()
 
@@ -24,7 +24,7 @@ Poor mans hive client
 
 ::
 
-    python -m hive [script]
+    python -m hiver [script]
 
 Who?
 ====

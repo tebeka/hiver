@@ -11,4 +11,4 @@ virtualenv $tmp
 . ${tmp}/bin/activate
 python setup.py install
 cd /tmp
-python -m hive --version
+python -m hiver --version

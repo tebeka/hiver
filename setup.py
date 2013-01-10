@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(
-    name='hive',
+    name='hiver',
     version='0.1.0',
     description='Hive thrift client',
     long_description=open('README.rst').read(),
@@ -13,13 +13,13 @@ setup(
     license='MIT',
     url='https://bitbucket.org/tebeka/hive',
     packages=[
-        'hive',
-        'hive.fb303',
-        'hive.fb303_scripts',
-        'hive.hive_metastore',
-        'hive.hive_serde',
-        'hive.hive_service',
-        'hive.queryplan',
+        'hiver',
+        'hiver.fb303',
+        'hiver.fb303_scripts',
+        'hiver.hive_metastore',
+        'hiver.hive_serde',
+        'hiver.hive_service',
+        'hiver.queryplan',
     ],
     install_requires=['thrift'],
 )
