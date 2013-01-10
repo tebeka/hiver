@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tmp=/tmp/hiveenv
+tmp=/tmp/hiver-env
 
 set -e
 
