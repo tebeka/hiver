@@ -4,19 +4,21 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from ..thrift.Thrift import *
+from thrift.Thrift import *
+from .. import hive_metastore
 from ..hive_metastore import ThriftHiveMetastore
+from .. import queryplan
 from ttypes import *
-from ..thrift.Thrift import TProcessor
-from ..thrift.transport import TTransport
-from ..thrift.protocol import TBinaryProtocol, TProtocol
+from thrift.Thrift import TProcessor
+from thrift.transport import TTransport
+from thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from ..thrift.protocol import fastbinary
+  from thrift.protocol import fastbinary
 except:
   fastbinary = None
 
 
-class Iface(ThriftHiveMetastore.Iface):
+class Iface(hive_metastore.ThriftHiveMetastore.Iface):
   def execute(self, query):
     """
     Parameters:
@@ -1006,7 +1008,7 @@ class getSchema_result:
   """
 
   thrift_spec = (
-    (0, TType.STRUCT, 'success', (ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
+    (0, TType.STRUCT, 'success', (hive_metastore.ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
     (1, TType.STRUCT, 'ex', (HiveServerException, HiveServerException.thrift_spec), None, ), # 1
   )
 
@@ -1121,7 +1123,7 @@ class getThriftSchema_result:
   """
 
   thrift_spec = (
-    (0, TType.STRUCT, 'success', (ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
+    (0, TType.STRUCT, 'success', (hive_metastore.ttypes.Schema, hive_metastore.ttypes.Schema.thrift_spec), None, ), # 0
     (1, TType.STRUCT, 'ex', (HiveServerException, HiveServerException.thrift_spec), None, ), # 1
   )
 

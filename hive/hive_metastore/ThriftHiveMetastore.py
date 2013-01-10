@@ -4,14 +4,14 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-from ..thrift.Thrift import *
-from ..fb303 import FacebookService as fb303_FacebookServer
+from thrift.Thrift import *
+from ..fb303 import FacebookService as fb303_FacebookService
 from ttypes import *
-from ..thrift.Thrift import TProcessor
-from ..thrift.transport import TTransport
-from ..thrift.protocol import TBinaryProtocol, TProtocol
+from thrift.Thrift import TProcessor
+from thrift.transport import TTransport
+from thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from ..thrift.protocol import fastbinary
+  from thrift.protocol import fastbinary
 except:
   fastbinary = None
 

@@ -5,9 +5,9 @@
 #
 
 from thrift.Thrift import *
-import fb303.ttypes
-import hive_metastore.ttypes
-import queryplan.ttypes
+from ..fb303 import ttypes as fb303_ttypes
+from ..hive_metastore import ttypes as ms_ttypes
+from ..queryplan import ttypes as qp_ttypes
 
 
 from thrift.transport import TTransport
