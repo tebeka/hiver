@@ -12,6 +12,14 @@ setup(
     author_email='miki.tebeka@gmail.com',
     license='MIT',
     url='https://bitbucket.org/tebeka/hive',
-    py_modules=['hive'],
+    packages=[
+        'hive',
+        'hive.fb303',
+        'hive.fb303_scripts',
+        'hive.hive_metastore',
+        'hive.hive_serde',
+        'hive.hive_service',
+        'hive.queryplan',
+    ],
     install_requires=['thrift'],
 )
