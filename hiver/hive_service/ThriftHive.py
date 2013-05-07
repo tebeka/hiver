@@ -1142,7 +1142,7 @@ class getThriftSchema_result:
         break
       if fid == 0:
         if ftype == TType.STRUCT:
-          self.success = ttypes.Schema()
+          self.success = hive_metastore.ttypes.Schema()
           self.success.read(iprot)
         else:
           iprot.skip(ftype)
